@@ -185,12 +185,13 @@ public class LengthFieldBasedFrameDecoder extends ByteToMessageDecoder {
 
     private final ByteOrder byteOrder;
     private final int maxFrameLength;
-    private final int lengthFieldOffset;
-    private final int lengthFieldLength;
-    private final int lengthFieldEndOffset;
-    private final int lengthAdjustment;
-    private final int initialBytesToStrip;
-    private final boolean failFast;
+    private final int lengthFieldOffset; // 该帧数据中，存放该帧数据的长度的数据的起始位置
+    private final int lengthFieldLength; // 记录该帧数据长度的字段本身的长度
+    private final int lengthFieldEndOffset; //
+    //指的是length这个属性的值，假如我们的body长度是40，有时候，有些人喜欢将length写成44，因为length本身还占有4个字节，这样就需要调整一下，那么就需要-4，我们这边没有这样做，所以写0就可以了
+    private final int lengthAdjustment;     //修改帧数据长度字段中定义的值，可以为负数
+    private final int initialBytesToStrip;  //解析的时候需要跳过的字节数
+    private final boolean failFast;       //为true，当frame长度超过maxFrameLength时立即报TooLongFrameException异常，为false，读取完整个帧再报异常
     private boolean discardingTooLongFrame;
     private long tooLongFrameLength;
     private long bytesToDiscard;

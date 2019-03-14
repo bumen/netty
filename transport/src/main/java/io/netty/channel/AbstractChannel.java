@@ -805,6 +805,7 @@ public abstract class AbstractChannel extends DefaultAttributeMap implements Cha
                 return;
             }
 
+
             // As a user may call deregister() from within any method while doing processing in the ChannelPipeline,
             // we need to ensure we do the actual deregister operation later. This is needed as for example,
             // we may be in the ByteToMessageDecoder.callDecode(...) method and so still try to do processing in

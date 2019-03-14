@@ -175,6 +175,7 @@ public class ServerBootstrap extends AbstractBootstrap<ServerBootstrap, ServerCh
                     pipeline.addLast(handler);
                 }
 
+                // childHandler等到下次事件时开始处理请求。server的register事件接收不到
                 ch.eventLoop().execute(new Runnable() {
                     @Override
                     public void run() {

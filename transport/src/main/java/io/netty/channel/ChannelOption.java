@@ -72,7 +72,10 @@ public class ChannelOption<T> extends AbstractConstant<ChannelOption<T>> {
     }
 
     public static final ChannelOption<ByteBufAllocator> ALLOCATOR = valueOf("ALLOCATOR");
+
+    // 可以控制read时的生成buffer大小，与连续读取几次
     public static final ChannelOption<RecvByteBufAllocator> RCVBUF_ALLOCATOR = valueOf("RCVBUF_ALLOCATOR");
+    // 可以控制write时消息大小
     public static final ChannelOption<MessageSizeEstimator> MESSAGE_SIZE_ESTIMATOR = valueOf("MESSAGE_SIZE_ESTIMATOR");
 
     public static final ChannelOption<Integer> CONNECT_TIMEOUT_MILLIS = valueOf("CONNECT_TIMEOUT_MILLIS");
@@ -82,6 +85,7 @@ public class ChannelOption<T> extends AbstractConstant<ChannelOption<T>> {
      */
     @Deprecated
     public static final ChannelOption<Integer> MAX_MESSAGES_PER_READ = valueOf("MAX_MESSAGES_PER_READ");
+    // 控制flush时，flush几次
     public static final ChannelOption<Integer> WRITE_SPIN_COUNT = valueOf("WRITE_SPIN_COUNT");
     /**
      * @deprecated Use {@link #WRITE_BUFFER_WATER_MARK}
@@ -96,9 +100,13 @@ public class ChannelOption<T> extends AbstractConstant<ChannelOption<T>> {
     public static final ChannelOption<WriteBufferWaterMark> WRITE_BUFFER_WATER_MARK =
             valueOf("WRITE_BUFFER_WATER_MARK");
 
+    // 是否允许半关闭
     public static final ChannelOption<Boolean> ALLOW_HALF_CLOSURE = valueOf("ALLOW_HALF_CLOSURE");
+
+    //连接成功后会自动读取
     public static final ChannelOption<Boolean> AUTO_READ = valueOf("AUTO_READ");
 
+    // 抛出异常时会自动关闭
     /**
      * If {@code true} then the {@link Channel} is closed automatically and immediately on write failure.
      * The default value is {@code true}.
@@ -121,6 +129,7 @@ public class ChannelOption<T> extends AbstractConstant<ChannelOption<T>> {
     public static final ChannelOption<Boolean> IP_MULTICAST_LOOP_DISABLED = valueOf("IP_MULTICAST_LOOP_DISABLED");
 
     public static final ChannelOption<Boolean> TCP_NODELAY = valueOf("TCP_NODELAY");
+
 
     @Deprecated
     public static final ChannelOption<Boolean> DATAGRAM_CHANNEL_ACTIVE_ON_REGISTRATION =
